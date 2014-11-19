@@ -1,0 +1,29 @@
+html, body {
+  background-color: rgb(250, 250, 250);
+  font-family: "Lato", sans-serif;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  color: rgb(28, 61, 115);
+}
+
+a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: rgb(0, 9, 38);
+}
+
+#wrapper {
+  width: 640px;
+  margin: 0 auto;
+}
+
+.default-margin-top {
+  margin-top: 3em;
+}
