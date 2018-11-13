@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Alex Braha Stoll</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="http://ajax.googleapis.com/ajax/libs/webfont/1.5.6/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Lato']
+        }
+      });
+    </script>
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="default-margin-top">
+        <h1>WebAssembly: aplicações Web com performance de aplicação nativa</h1>
+      </div>
+      <div class="default-margin-top">
+        <h2>Introdução</h2>
+        <p class="text-left">
+          Este é um artigo que acompanha a palestra que dei na Fatec Mogi das Cruzes
+          em 6 de novembro de 2018 sobre WebAssembly. Aqui, teremos a bibliografia
+          usada para montar a apresentação, recomendações de outros recursos
+          para quem tiver se interessado sobre o tema e também uma rápida demo
+          mostrando na prática o uso básico de WebAssembly em uma aplicação Web.
+        </p>
+      </div>
+      <div class="default-margin-top">
+        <h2>Bibliografia / recomendações de mais recursos sobre o tema</h2>
+        <p class="text-left">
+          <a href="../download/wasm-intro-slides.pdf">Download da apresentação</a>
+        </p>
+        <p class="text-left">
+          Abaixo, segue uma lista de artigos e outros tipos de mídia que recomendo
+          fortemente para quem tiver se interessado sobre WebAssembly e quiser entender
+          mais não só sobre como usar a tecnologia mas também o porquê da sua criação
+          e quais os seus trunfos sobre JavaScript (e outras tecnologias já aposentadas
+          como Java Applets e Flash).
+        </p>
+        <ul class="text-left" style="list-style-type: disc">
+          <li>
+            <a href="https://softwareengineeringdaily.com/2018/07/20/webassembly-with-lin-clark/" target="_blank">SE Daily Podcast: WebAssembly with Lin Clark</a>
+          </li>
+          <li>
+            <a href="https://softwareengineeringdaily.com/2018/08/17/webassembly-future-with-steve-klabnik/" target="_blank">SE Daily Podcast: WebAssembly Future with Steve Klabnik</a>
+          </li>
+          <li>
+            <a href="https://softwareengineeringdaily.com/2018/08/20/webassembly-engineering-with-ben-smith-and-thomas-nattestad/" target="_blank">SE Daily Podcast: WebAssembly Engineering with Ben Smith and Thomas Nattestad</a>
+          </li>
+          <li>
+            <a href="https://words.steveklabnik.com/is-webassembly-the-return-of-java-applets-flash" target="_blank">Is WebAssembly the return of Java Applets & Flash?</a>
+          </li>
+          <li>
+            <a href="https://words.steveklabnik.com/webassembly-is-more-than-just-the-web" target="_blank">WebAssembly is more than the web</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/pt-BR/docs/WebAssembly" target="_blank">Mozilla Developer Network: WebAssembly</a>
+          </li>
+          <li>
+            <a href="https://github.com/JasonWeathersby/WASMSobel" target="_blank">Manipulando vídeo: JS vs WebAssembly (exemplo)</a>
+          </li>
+        </ul>
+      </div>
+      <div class="default-margin-top">
+        <h2>Demonstração</h2>
+        <p class="text-left">
+          Criei <a href="https://github.com/alexbrahastoll/demo-wasm" target="_blank">um repositório no GitHub</a> com uma demonstração simples de como
+          compilar para WebAssembly um programa em C que calcula e imprime na tela
+          os 30 primeiros números da sequência de Fibonacci.
+        </p>
+        <div class="default-margin-top default-margin-bottom">
+          <img src="../img/wasm-fibonacci.png" width="800" height="600" />
+        </div>
+        <p class="text-left">
+          Para rodar o exemplo em sua máquina, basta baixar o repositório e depois
+          abrir o arquivo main.html com o Firefox (a versão deve ser 52 ou superior).
+          Versões novas de todos os principais navegadores também suportam WebAssembly,
+          no entanto parece ser necessário algum passo extra para execução de WebAssembly
+          localmente (no Chrome e no Safari, por exemplo, ocorre um erro ao se tentar carregar
+          o arquivo .wasm; não cheguei a pesquisar exatamente porque isso acontece, mas em um uso
+          em produção esse problema não deve surgir).
+        </p>
+        <p class="text-left">
+          O demo usa o Emscripten, uma ferramenta para compilação de C e C++ para WebAssembly.
+          Se você quiser experimentar e modificar o programa do demo, será necessário instalar
+          o Emscripten (e algumas outras dependências) localmente.
+        </p>
+        <p class="text-left">
+          Um ponto interessante é que o Emscripten já gera automaticamente um arquivo HTML
+          e também um arquivo JS que executa o código (desenvolvido em C ou C++) que foi
+          compilado para WebAssembly (.wasm).
+        </p>
+        <p class="text-left">
+          Para esse simples demo, eu basicamente segui os passos descritos no artigo
+          <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank">Compiling a New C/C++ Module to WebAssembly</a>
+          da Mozilla Developer Network (MDN).
+        </p>
+        <p class="text-left">
+          Para quem desejar se aprofundar, nesse artigo também é mostrado como ter outras
+          funções - que não a função <i>main</i> - chamadas pelo código JS.
+          Nesse mesmo artigo - e também em outros artigos da seção no MDN sobre WebAssembly -
+          é mostrado como escrever manualmente código JS para chamar código que foi compilado
+          para WebAssembly (e há também outros artigos com tópicos mais avançados sobre WebAssembly).
+          Recomendo fortemente a leitura desse artigo para quem quiser começar a estudar essa
+          nova tecnologia.
+        </p>
+        <p class="text-left">
+          Outro ponto interessante que surgiu enquanto eu criava o demo foi a segurança
+          de código compilado para WebAssembly. Em uma primeira tentativa, eu havia
+          cometido um erro de implementação que fazia com que fosse acessado um índice
+          não existente no array instanciado durante o algoritmo. Esse, aliás, é um erro
+          muito comum em programas escritos em C (e outras linguagens de programação similares).
+          Em C - pelo menos por padrão, no entanto existem ferramentas que poderiam ajudar na detecção da falha - esse erro passaria indetectado e poderia resultar
+          em brechas de segurança na aplicação; em WebAssembly, no entanto, o código é abortado
+          com um erro de <i>array index out of bounds</i>. Aliás, essas e outras
+          mensagens de alerta / erro serão exibidas no console JavaScript do seu navegador,
+          então fica a dica de olhar o console caso o seu programa não esteja funcionando!
+        </p>
+      </div>
+      <div class="default-margin-top">
+        <h2>Conclusão</h2>
+        <p class="text-left">
+          WebAssembly é uma tecnologia muito interessante e - como disse durante a palestra -
+          com grandes chances de vingar (principalmente por se adequar perfeitamente ao
+          ecossistema Web e por ter suporte das grandes empresas desse mercado). Na minha opinião,
+          vale a pena pelo menos ficar de olho nos desenvolvimentos da tecnologia nos próximos anos;
+          acredito que, conforme ela for amadurecendo, começará a aparecer no dia a dia de muitos
+          desenvolvedores Web (ou até em empresas que vislumbrarem na tecnologia a possibilidade de começar a oferecer
+          uma experiência Web com base em alguma aplicação nativa já madura).
+        </p>
+        <p class="text-left">
+          Caso você tenha alguma dúvida ou queira fazer alguma observação, não hesite em me contatar.
+          Espero que este artigo tenha pelo menos ajudado você a dar os primeiros passos na jornada
+          de aprendizado dessa nova tecnologia com tanto potencial.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

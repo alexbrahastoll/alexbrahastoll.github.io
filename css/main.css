@@ -11,12 +11,12 @@ ul {
 
 a, a:link, a:visited {
   text-decoration: none;
-  color: rgb(28, 61, 115);
+  color: rgb(51, 109, 204);
 }
 
 a:hover, a:focus, a:active {
   text-decoration: none;
-  color: rgb(0, 9, 38);
+  color: rgb(35, 75, 140);
 }
 
 #wrapper {
@@ -24,6 +24,14 @@ a:hover, a:focus, a:active {
   margin: 0 auto;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .default-margin-top {
   margin-top: 3em;
+}
+
+.default-margin-bottom {
+  margin-bottom: 3em;
 }
